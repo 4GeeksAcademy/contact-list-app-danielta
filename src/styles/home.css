@@ -1,0 +1,60 @@
+#addButton {
+    text-align: right;
+    margin-right:5vw;
+    margin-top: 5vh;
+}
+
+#contactList {
+    display: block;
+    margin:auto;
+    margin-top: 12vh;
+    justify-content: center;
+    text-align: center;
+}
+
+#contactCard {
+    margin:auto;
+    display: flex;
+    border: 1px solid gray;
+    width: 65vw;
+    /* margin-left: 50px;
+    margin-right: 50px; */
+}
+
+#pfp {
+    border-radius: 50%;
+    width: 15vw;
+    height: 15vh;
+}
+
+#traitList {
+    width: 40vw;
+    display:block;
+    text-align: left;
+}
+
+#buttons {
+    width: 10vw;
+    /* text-align: right; */
+    justify-content: right;
+}
+#edit {
+    /* margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 80px; */
+    margin-top:2vh;
+}
+
+#delete {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    /* margin-bottom: 80px; */
+    /* text-align: right; */
+    border: none;
+    background: none;
+
+}
+
+#addForm {
+    margin: 6rem;
+}

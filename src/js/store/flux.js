@@ -12,9 +12,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+			],
+			contacts: [
+
 			]
 		},
 		actions: {
+
+			getContactList: () => {
+				fetch("https://playground.4geeks.com/contact/agendas/danielta/contacts")
+					.then((res) => res.json())
+					.then((response) => setStore({ contacts: response.contacts }))
+					.catch((err) => console.log(err))
+			},
+
+			addContact: (contact) => {
+				fetch("https://playground.4geeks.com/contact/agendas/danielta/contacts", {
+					method: 'POST',
+					body: JSON.stringify(
+						{
+							"name": contact.name,
+							"phone": contact.phone,
+							"email": contact.email,
+							"address": contact.address
+						}
+					),
+					headers: {
+						'Content-type': 'application/json'
+					}
+				})
+					.then(res => {
+						if (!res.ok) throw Error(res.statusText);
+						return res.json();
+					})
+					.then(response => getActions().getContactList())
+					.catch(error => console.error(error));
+			},
+
+			editContact: (contact) => {
+				fetch(`https://playground.4geeks.com/contact/agendas/danielta/contacts/${contact.id}`, {
+					method: 'PUT',
+					body: JSON.stringify(
+						{
+							"name": contact.name,
+							"phone": contact.phone,
+							"email": contact.email,
+							"address": contact.address
+						}
+					),
+					headers: {
+						'Content-type': 'application/json'
+					}
+				})
+					.then(res => {
+						if (!res.ok) throw Error(res.statusText);
+						return res.json();
+					})
+					.then(response => getActions().getContactList())
+					.catch(error => console.error(error));
+			},
+
+			deleteContact: (contact) => {
+				fetch(`https://playground.4geeks.com/contact/agendas/danielta/contacts/${contact.id}`, {
+					method: 'DELETE'
+				})
+					.then(res => {
+						if (!res.ok) throw Error(res.statusText);
+						getActions().getContactList();
+					})
+					.catch(error => console.error(error));
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
