@@ -72,8 +72,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error(error));
 			},
 
-			deleteContact: (contact) => {
-				fetch(`https://playground.4geeks.com/contact/agendas/danielta/contacts/${contact.id}`, {
+			deleteContact: (id) => {
+				fetch(`https://playground.4geeks.com/contact/agendas/danielta/contacts/${id}`, {
 					method: 'DELETE'
 				})
 					.then(res => {
